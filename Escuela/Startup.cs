@@ -26,8 +26,8 @@ namespace Escuela
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString
+            services.AddDbContext<ApplicationDbContext>(optios =>
+            optios.UseSqlServer(Configuration.GetConnectionString
             ("DefaultConnection")));
 
 
