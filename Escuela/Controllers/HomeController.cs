@@ -23,23 +23,33 @@ namespace Escuela.Controllers
 
         public IActionResult Index()
         {
-            Course course = new Course();
-            course.Title = "Poooh";
-            course.Credits = 100;
-            icourse.Insertar(course);
+            //Course course = new Course();
+            //course.Title = "Poooh";
+            //course.Credits = 100;
+            //icourse.Insertar(course);
             return View();
         }
         
-        //[HttpPost]
-        //public IActionResult Indexdos(String Title, int Credits)
+        public IActionResult GetAll()
+        {
+            var DandoFormatoJson = icourse.ListarCursos();
+
+            return Json(new { data = DandoFormatoJson });
+        }
+
+        public IActionResult Indexdos(String Title, int Credits)
+        {
+            Course course = new Course();
+            course.Title = Title;
+            course.Credits = Credits;
+            icourse.Insertar(course);
+            return View();
+        }
+
+        //public IActionResult Indexdos()
         //{
-        //    Course course = new Course();
-        //    course.Title = Title;
-        //    course.Credits = Credits;
-        //    icourse.Insertar(course);
         //    return View();
         //}
-
         public IActionResult Privacy()
         {
             

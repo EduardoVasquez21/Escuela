@@ -17,10 +17,31 @@ namespace Escuela.Repositorio
             this.app = app;
         }
 
+        public void Buscar(Course c)
+        {
+            app.Courses.Find(c);
+
+        }
+
+        public void Delete(Course c)
+        {
+            app.Courses.Remove(c);
+        }
+
         public void Insertar(Course c)
         {
             app.Add(c);
             app.SaveChanges();
+        }
+
+        //public List<Course> ListarCursos()
+        //{
+        //    return app.Courses.ToList();
+        //}
+
+        ICollection<Course> ICourese.ListarCursos()
+        {
+            return app.Courses.ToList();
         }
     }
 }

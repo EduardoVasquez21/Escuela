@@ -1,4 +1,4 @@
-﻿@*@model Escuela.Dominio.Course
+﻿@model Escuela.Dominio.Course
 @{
     ViewData["Title"] = "Indexdos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,15 +7,18 @@
 <h1>Indexdos</h1>
 
 @using (Html.BeginForm("Indexdos", "Home", FormMethod.Post))
-    {
-        <label>Title</label>
-        <input type="text" name="Nombre" value="" />
-        <br />
-        <label>Credits</label>
-        <input type="number" name="DUI" value="" />
-        <br />
-        <input type="submit">
-        <br>
-        <br />
-    }*@
+{
+    <label>Title</label>
+    <br />
+    @Html.TextBoxFor(m => m.Title)
+    <br />
+    <br />
+    <label>Credits</label>
+    <br />
+    @Html.TextBoxFor(m => m.Credits)
+    <br />
+    <br />
+    <input type="submit">
+    <br>
+}
 
