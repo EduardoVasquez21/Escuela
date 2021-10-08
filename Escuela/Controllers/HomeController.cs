@@ -29,6 +29,16 @@ namespace Escuela.Controllers
             icourse.Insertar(course);
             return View();
         }
+        
+        //[HttpPost]
+        //public IActionResult Indexdos(String Title, int Credits)
+        //{
+        //    Course course = new Course();
+        //    course.Title = Title;
+        //    course.Credits = Credits;
+        //    icourse.Insertar(course);
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {
