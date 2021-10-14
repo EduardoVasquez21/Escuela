@@ -23,10 +23,13 @@ namespace Escuela.Controllers
 
         public IActionResult Index()
         {
+            //for (int i=0; i<=100; i++) {
             //Course course = new Course();
             //course.Title = "Poooh";
             //course.Credits = 100;
             //icourse.Insertar(course);
+            
+            //}
             return View();
         }
         
