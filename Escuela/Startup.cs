@@ -33,6 +33,7 @@ namespace Escuela
             ("DefaultConnection")));
 
             services.AddTransient<ICourese, CourseRepositorio>();
+            services.AddTransient<IEnrollements, EnrollementRepositorio>();
 
 
         }

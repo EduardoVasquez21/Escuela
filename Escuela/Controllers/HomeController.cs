@@ -15,9 +15,11 @@ namespace Escuela.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ICourese icourse;
-        public HomeController(ILogger<HomeController> logger, ICourese icourse)
+        private IEnrollements ienrollements;
+        public HomeController(ILogger<HomeController> logger, ICourese icourse, IEnrollements ienrollements)
         {
             this.icourse = icourse;
+            this.ienrollements = ienrollements;
             _logger = logger;
         }
 
@@ -28,8 +30,11 @@ namespace Escuela.Controllers
             //course.Title = "Poooh";
             //course.Credits = 100;
             //icourse.Insertar(course);
-            
+
             //}
+
+            var listado = ienrollements.UnionDeTablas();
+            _ = listado;
             return View();
         }
         
@@ -40,19 +45,17 @@ namespace Escuela.Controllers
             return Json(new { data = DandoFormatoJson });
         }
 
-        public IActionResult Indexdos(String Title, int Credits)
+        public IActionResult insert(Course c)
         {
-            Course course = new Course();
-            course.Title = Title;
-            course.Credits = Credits;
-            icourse.Insertar(course);
-            return View();
+
+            icourse.Insertar(c);
+            return Redirect("Indexdos");
         }
 
-        //public IActionResult Indexdos()
-        //{
-        //    return View();
-        //}
+        public IActionResult Indexdos()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             
