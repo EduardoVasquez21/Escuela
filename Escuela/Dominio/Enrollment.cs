@@ -16,10 +16,10 @@ namespace Escuela.Dominio
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EnrollmentID { get; set; }
+        public int EnrollmentId { get; set; }
 
-        public int CourseID { get; set; }
-        public int StudentID { get; set; }
+        public int CourseId { get; set; }
+        public int StudentId { get; set; }
 
         public Grade? Grade { get; set; }
 

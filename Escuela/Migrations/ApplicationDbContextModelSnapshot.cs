@@ -39,25 +39,25 @@ namespace Escuela.Migrations
 
             modelBuilder.Entity("Escuela.Dominio.Enrollment", b =>
                 {
-                    b.Property<int>("EnrollmentID")
+                    b.Property<int>("EnrollmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseID")
+                    b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Grade")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentID")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.HasKey("EnrollmentID");
+                    b.HasKey("EnrollmentId");
 
-                    b.HasIndex("CourseID");
+                    b.HasIndex("CourseId");
 
-                    b.HasIndex("StudentID");
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Enrollments");
                 });
@@ -86,14 +86,14 @@ namespace Escuela.Migrations
             modelBuilder.Entity("Escuela.Dominio.Enrollment", b =>
                 {
                     b.HasOne("Escuela.Dominio.Course", "Course")
-                        .WithMany("Enrollments")
-                        .HasForeignKey("CourseID")
+                        .WithMany("Enrollment")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Escuela.Dominio.Students", "Student")
-                        .WithMany("Enrollments")
-                        .HasForeignKey("StudentID")
+                        .WithMany("Enrollment")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -104,12 +104,12 @@ namespace Escuela.Migrations
 
             modelBuilder.Entity("Escuela.Dominio.Course", b =>
                 {
-                    b.Navigation("Enrollments");
+                    b.Navigation("Enrollment");
                 });
 
             modelBuilder.Entity("Escuela.Dominio.Students", b =>
                 {
-                    b.Navigation("Enrollments");
+                    b.Navigation("Enrollment");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,7 +16,7 @@ namespace Escuela.Dominio
         public string FirstMidName { get; set; }
         public DateTime EnrollmentsDate { get; set; }
 
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Enrollment> Enrollment { get; set; }
 
 
 
