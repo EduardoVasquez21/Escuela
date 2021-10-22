@@ -1,0 +1,55 @@
+﻿@model List<Escuela.Dominio.Enrollment>
+@{
+    ViewData["Title"] = "Indextres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Indextres</h1>
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table id="mitabla" class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>Id Ernrollment</th>
+            <th>Student Id</th>
+            <th>Last Name</th>
+            <th>CreditsFirstMidName</th>
+            <th>curso al que pertence</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var iteracion in Model)
+        {
+            <tr>
+                <td>@iteracion.EnrollmentId</td>
+                <td>@iteracion.StudentID</td>
+                <td>@iteracion.CourseID</td>
+                <td>@iteracion.Student.LastName</td>
+                <td>@iteracion.Student.FirstMidName</td>
+                <td>@iteracion.Course.Title</td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        var tabla = $('#mitabla').DataTable({
+
+
+        })
+    })
+</script>

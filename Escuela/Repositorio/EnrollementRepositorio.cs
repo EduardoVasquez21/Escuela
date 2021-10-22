@@ -20,8 +20,10 @@ namespace Escuela.Repositorio
 
         public List<Enrollment> UnionDeTablas()
         {
-            var union = bd.Enrollments.Include(e => e.Student).ToList();
+            var union = bd.Enrollments.Include(e => e.Student).Include(c=>c.Course) .ToList();
             return union;
         }
+
+
     }
 }

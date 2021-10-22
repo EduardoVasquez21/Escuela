@@ -2,6 +2,7 @@
 using Escuela.Models;
 using Escuela.Servicio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -25,19 +26,55 @@ namespace Escuela.Controllers
 
         public IActionResult Index()
         {
-            //for (int i=0; i<=100; i++) {
-            //Course course = new Course();
-            //course.Title = "Poooh";
-            //course.Credits = 100;
-            //icourse.Insertar(course);
+            //for (int i = 0; i <= 100; i++)
+            //{
+            //    Course course = new Course();
+            //    course.Title = "Poooh";
+            //    course.Credits = 100;
+            //    icourse.Insertar(course);
 
             //}
 
-            var listado = ienrollements.UnionDeTablas();
-            _ = listado;
+            //var listado = ienrollements.UnionDeTablas();
+            //_ = listado;
+
+
             return View();
         }
-        
+
+        public IActionResult combobox()
+        {
+            var informationofthecombo = icourse.ListarCursos();
+
+
+            List<SelectListItem> lista = new List<SelectListItem>();
+            foreach (var iterarinformation in informationofthecombo)
+            {
+                lista.Add(
+                    new SelectListItem
+                    {
+                        Text = iterarinformation.Title,
+                        Value = Convert.ToString(iterarinformation.CourseId)
+                    }
+
+                    );
+                ViewBag.estado = lista;
+            }
+
+
+            return View();
+        }
+
+        public IActionResult Indextres()
+        {
+
+            var listado = ienrollements.UnionDeTablas();
+            _ = listado;
+
+
+            return View(listado);
+        }
+
         public IActionResult GetAll()
         {
             var DandoFormatoJson = icourse.ListarCursos();
@@ -67,5 +104,7 @@ namespace Escuela.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

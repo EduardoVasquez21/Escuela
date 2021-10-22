@@ -18,8 +18,8 @@ namespace Escuela.Dominio
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EnrollmentId { get; set; }
 
-        public int CourseId { get; set; }
-        public int StudentId { get; set; }
+        public int CourseID { get; set; }
+        public int StudentID { get; set; }
 
         public Grade? Grade { get; set; }
 

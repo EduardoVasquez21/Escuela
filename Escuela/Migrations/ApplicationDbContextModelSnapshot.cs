@@ -44,20 +44,20 @@ namespace Escuela.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("CourseID")
                         .HasColumnType("int");
 
                     b.Property<int?>("Grade")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int>("StudentID")
                         .HasColumnType("int");
 
                     b.HasKey("EnrollmentId");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("CourseID");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentID");
 
                     b.ToTable("Enrollments");
                 });
@@ -87,13 +87,13 @@ namespace Escuela.Migrations
                 {
                     b.HasOne("Escuela.Dominio.Course", "Course")
                         .WithMany("Enrollment")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Escuela.Dominio.Students", "Student")
                         .WithMany("Enrollment")
-                        .HasForeignKey("StudentId")
+                        .HasForeignKey("StudentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
