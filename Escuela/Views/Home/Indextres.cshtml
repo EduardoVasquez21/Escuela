@@ -7,18 +7,15 @@
 <h1>Indextres</h1>
 
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
 <table id="mitabla" class="table table-dark table-hover">
     <thead>
         <tr>
             <th>Id Ernrollment</th>
             <th>Student Id</th>
+            <th>Course Id</th>
             <th>Last Name</th>
-            <th>CreditsFirstMidName</th>
+            <th>FirstMidName</th>
             <th>curso al que pertence</th>
         </tr>
 
@@ -30,7 +27,7 @@
             <tr>
                 <td>@iteracion.EnrollmentId</td>
                 <td>@iteracion.StudentID</td>
-                <td>@iteracion.CourseID</td>
+                <td>@iteracion.Course.CourseId</td>
                 <td>@iteracion.Student.LastName</td>
                 <td>@iteracion.Student.FirstMidName</td>
                 <td>@iteracion.Course.Title</td>
@@ -41,6 +38,8 @@
     </tbody>
 
 </table>
+
+@section Scripts{
 
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
@@ -53,3 +52,4 @@
         })
     })
 </script>
+}

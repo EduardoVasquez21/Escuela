@@ -1,0 +1,16 @@
+﻿@model Escuela.Dominio.Course
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>combobox</title>
+</head>
+<body>
+    @Html.DropDownListFor(a => a.CourseId, new SelectList(ViewBag.estado, "Value", "Text"), "Select a course", new { @class = "form-control" })
+</body>
+</html>
