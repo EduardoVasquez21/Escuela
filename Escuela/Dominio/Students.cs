@@ -14,15 +14,17 @@ namespace Escuela.Dominio
         public int StudentId { get; set; }
 
         [Display(Name = "LastName")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public string LastName { get; set; }
 
         [Display(Name = "FirstMidName")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public string FirstMidName { get; set; }
 
         [Display(Name = "Date")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "REQUIRED DATA")]
+
         public DateTime EnrollmentsDate { get; set; }
 
         public ICollection<Enrollment> Enrollment { get; set; }

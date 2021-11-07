@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class=" animate__animated animate__rubberBand">Students Inscription</h1>
+<h1 class=" animate__animated animate__zoomInDown">Students Inscription</h1>
 <script src="https://kit.fontawesome.com/16bd784e77.js" crossorigin="anonymous"></script>
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -14,18 +14,8 @@
 @using (Html.BeginForm("SaveStu", "Student", FormMethod.Post))
 {
 
-
-    <h2 class=" animate__animated animate__bounce">Welcome Student, please insert a Student´s data</h2>
-    <br>
-    <i class="fas fa-book"></i>
-    <label>First Mid Name</label>
-    <br />
-    @Html.TextBoxFor(m => m.FirstMidName)
-    <br />
-    @Html.ValidationMessageFor(m => m.FirstMidName)
-    <br />
-    <br />
-    <i class="far fa-star"></i>
+<div class="form-group">
+    <i class="fas fa-user-tag"></i>
     <br />
     <label>LastName</label>
     <br />
@@ -33,18 +23,33 @@
     <br />
     @Html.ValidationMessageFor(m => m.LastName)
     <br />
+</div>
+
+<div class="form-group">
+    <i class="fas fa-user-tie"></i>
+    <label>First Mid Name</label>
     <br />
-    <label>LastName</label>
+    @Html.TextBoxFor(m => m.FirstMidName)
     <br/>
-    @Html.TextBoxFor(m => m.EnrollmentsDate)
-    <br />
-    @Html.ValidationMessageFor(m => m.EnrollmentsDate)
+    @Html.ValidationMessageFor(m => m.FirstMidName)
     <br />
     <br />
-    <input type="submit">
-    <br>
+</div>
+
+
+<div class="form-group">
+    <i class="fas fa-calendar-day"></i>
+    <label asp-for="EnrollmentsDate" class=" font-weight-bold"></label>
+    <input required asp-for="EnrollmentsDate" class="form-control font-weight-light" />
+</div>
+
+    <br />
+    <div class="form-group">
+        <input type="submit" value="SaveStudent">
+        <br>
+    </div>
 }
-<h2 class="wow animate__animated animate__pulse" data-wow-duration="2s" data-wow-delay="2s">Registrar Student</h2>
+<h2 class="wow animate__animated animate__pulse" data-wow-duration="2s" data-wow-delay="2s">Save Student</h2>
 <script src="https://cdn.boomcdn.com/libs/wow-js/1.3.0/wow.js"></script>
 <script type="text/javascript">
     new WOW().init();

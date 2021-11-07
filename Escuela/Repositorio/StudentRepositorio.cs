@@ -10,30 +10,31 @@ namespace Escuela.Repositorio
 {
     public class StudentRepositorio : IStudent
     {
-        private ApplicationDbContext app;
+        private ApplicationDbContext bd;
 
-        public StudentRepositorio(ApplicationDbContext app)
+        public StudentRepositorio(ApplicationDbContext bd)
         {
-            this.app = app;
+            this.bd = bd;
         }
         public void Buscar(Students s)
         {
-            app.Students.Find(s);
+            bd.Students.Find(s);
         }
 
         public void Delete(Students s)
         {
-            app.Students.Remove(s);
+            bd.Students.Remove(s);
         }
 
         public void Save(Students s)
         {
-            app.Students.Add(s);
+            bd.Add(s);
+            bd.SaveChanges();
         }
 
         public List<Students> ListOfStudents()
         {
-            return app.Students.ToList();
+            return bd.Students.ToList();
         }
 
 

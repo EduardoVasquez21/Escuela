@@ -3,10 +3,15 @@
     ViewData["Title"] = "MostrarCourses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+<h1 class=" animate__animated animate__backInLeft">Course List</h1>
 
-<h1>Lista de Cursos</h1>
-
+<button type="submit" class="btn btn-outline-dark animate__animated animate__backInDown"> @Html.ActionLink("Add a Course", "Indexdos")</button>
+<br />
+<br />
+<br />
 
 <table id="mitabla" class="table table-dark table-hover">
     <thead>
@@ -25,14 +30,13 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
 
-        $(document).ready(function ()
-        {
+        $(document).ready(function () {
 
             var tabla = $('#mitabla').DataTable({
-                "ajax":{
+                "ajax": {
                     "url": '/Course/GetAll',
                     "type": "get",
-                    "datatype":"json"
+                    "datatype": "json"
                 },
                 "columns": [
                     /*{ "data": "courseId", "name": "courserId", "autoWidth": true },*/

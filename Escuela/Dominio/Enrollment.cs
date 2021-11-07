@@ -19,11 +19,11 @@ namespace Escuela.Dominio
         public int EnrollmentId { get; set; }
 
         [Display(Name = "CourseID")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public int CourseID { get; set; }
 
         [Display(Name = "StudentID")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public int StudentID { get; set; }
 
         public Grade? Grade { get; set; }

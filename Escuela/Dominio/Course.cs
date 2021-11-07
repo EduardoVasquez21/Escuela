@@ -15,11 +15,11 @@ namespace Escuela.Dominio
         public int CourseId { get; set; }
 
         [Display(Name = "Title")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public string Title { get; set; }
 
         [Display(Name = "Credits")]
-        [Required(ErrorMessage = "DATO REQUERIDO")]
+        [Required(ErrorMessage = "REQUIRED DATA")]
         public int Credits { get; set; }
 
         public ICollection<Enrollment> Enrollment { get; set; }

@@ -4,18 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ListaEnrollement</h1>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<h1 class=" animate__animated animate__rubberBand">Enrollement´s List</h1>
 
-
+<button type="submit" class="btn btn-success animate__animated animate__lightSpeedInLeft"> @Html.ActionLink("Add Enrollment", "Combobox")</button>
+<br />
 <table id="mitablaenr" class="table table-dark table-hover">
     <thead>
         <tr>
             @*<th>Id Ernrollment</th>
-            <th>Student Id</th>
-            <th>Course Id</th>*@
+        <th>Student Id</th>
+        <th>Course Id</th>*@
             <th>Last Name</th>
             <th>FirstMidName</th>
-            <th>curso al que pertence</th>
+            <th>Course to which it belongs</th>
+            <th>Actions</th>
         </tr>
 
     </thead>
@@ -23,14 +27,15 @@
     <tbody>
         @foreach (var iteracion in Model)
         {
-            <tr>
-                @*<td>@iteracion.EnrollmentId</td>
-                <td>@iteracion.StudentID</td>
-                <td>@iteracion.Course.CourseId</td>*@
-                <td>@iteracion.Student.LastName</td>
-                <td>@iteracion.Student.FirstMidName</td>
-                <td>@iteracion.Course.Title</td>
-            </tr>
+        <tr>
+            @*<td>@iteracion.EnrollmentId</td>
+        <td>@iteracion.StudentID</td>
+        <td>@iteracion.Course.CourseId</td>*@
+            <td>@iteracion.Student.LastName</td>
+            <td>@iteracion.Student.FirstMidName</td>
+            <td>@iteracion.Course.Title</td>
+            @*<td>@Html.ActionLink("", "",new { @class = "btn btn-danger" })</td>*@
+        </tr>
         }
 
 
@@ -43,12 +48,12 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        var tabla = $('#mitablaenr').DataTable({
+            var tabla = $('#mitablaenr').DataTable({
 
 
+            })
         })
-    })
     </script>
 }
