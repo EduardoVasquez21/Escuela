@@ -34,6 +34,7 @@ namespace Escuela
 
             services.AddTransient<ICourese, CourseRepositorio>();
             services.AddTransient<IEnrollements, EnrollementRepositorio>();
+            services.AddTransient<IStudent, StudentRepositorio>();
 
 
         }

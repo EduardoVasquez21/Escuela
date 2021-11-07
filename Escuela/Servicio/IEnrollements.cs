@@ -8,6 +8,8 @@ namespace Escuela.Servicio
 {
     public interface IEnrollements
     {
+        void Ward(Enrollment e);
+
         List<Enrollment> UnionDeTablas();
     }
 }

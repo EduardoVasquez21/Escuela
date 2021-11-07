@@ -11,10 +11,15 @@ namespace Escuela.Dominio
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int CourseId { get; set; }
 
+        [Display(Name = "Title")]
+        [Required(ErrorMessage = "DATO REQUERIDO")]
         public string Title { get; set; }
 
+        [Display(Name = "Credits")]
+        [Required(ErrorMessage = "DATO REQUERIDO")]
         public int Credits { get; set; }
 
         public ICollection<Enrollment> Enrollment { get; set; }

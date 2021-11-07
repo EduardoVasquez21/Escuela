@@ -18,7 +18,12 @@ namespace Escuela.Dominio
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EnrollmentId { get; set; }
 
+        [Display(Name = "CourseID")]
+        [Required(ErrorMessage = "DATO REQUERIDO")]
         public int CourseID { get; set; }
+
+        [Display(Name = "StudentID")]
+        [Required(ErrorMessage = "DATO REQUERIDO")]
         public int StudentID { get; set; }
 
         public Grade? Grade { get; set; }

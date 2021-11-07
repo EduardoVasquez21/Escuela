@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h1>Indexdos</h1>
 <h1 class=" animate__animated animate__rubberBand">Course Inscription</h1>
 <script src="https://kit.fontawesome.com/16bd784e77.js" crossorigin="anonymous"></script>
 <link rel="stylesheet"
@@ -11,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js">
 
 
-@using (Html.BeginForm("insert", "Home", FormMethod.Post))
+@using (Html.BeginForm("Indexdos", "Course", FormMethod.Post))
 {
 
 
@@ -22,12 +23,16 @@
     <br />
     @Html.TextBoxFor(m => m.Title)
     <br />
+    @Html.ValidationMessageFor(m => m.Title)
+    <br />
     <br />
     <i class="far fa-star"></i>
     <br />
     <label>Credits</label>
     <br />
     @Html.TextBoxFor(m => m.Credits)
+    <br />
+    @Html.ValidationMessageFor(m => m.Credits)
     <br />
     <br />
     <input type="submit">

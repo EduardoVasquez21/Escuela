@@ -17,10 +17,12 @@ namespace Escuela.Controllers
         private readonly ILogger<HomeController> _logger;
         private ICourese icourse;
         private IEnrollements ienrollements;
-        public HomeController(ILogger<HomeController> logger, ICourese icourse, IEnrollements ienrollements)
+        private IStudent istudent;
+        public HomeController(ILogger<HomeController> logger, ICourese icourse, IEnrollements ienrollements, IStudent istudent)
         {
             this.icourse = icourse;
             this.ienrollements = ienrollements;
+            this.istudent = istudent;
             _logger = logger;
         }
 
@@ -42,38 +44,79 @@ namespace Escuela.Controllers
             return View();
         }
 
-        public IActionResult combobox()
+        //public IActionResult combobox()
+        //{
+        //    var informationofthecombo = icourse.ListarCursos();
+        //    var informationofthecomboforStudents = istudent.ListOfStudents();
+
+
+        //    List<SelectListItem> listOfCourse = new List<SelectListItem>();
+        //    List<SelectListItem> listStudent = new List<SelectListItem>();
+
+
+        //    foreach (var iterarinformation in informationofthecombo)
+        //    {
+        //        listOfCourse.Add(
+        //            new SelectListItem
+        //            {
+        //                Text = iterarinformation.Title,
+        //                Value = Convert.ToString(iterarinformation.CourseId)
+        //            }
+
+        //            );
+        //        ViewBag.estadolistcourse = listOfCourse;
+        //    }
+
+        //    foreach (var iterarinformation in informationofthecomboforStudents)
+        //    {
+        //        listStudent.Add(
+        //            new SelectListItem
+        //            {
+        //                Text = iterarinformation.FirstMidName,
+        //                Value = Convert.ToString(iterarinformation.StudentId)
+        //            }
+
+        //            );
+        //        ViewBag.estadoliststudent = listStudent;
+        //    }
+
+
+        //    return View();
+        //}
+
+        //public IActionResult GetinformationCombobox(Enrollment e)
+        //{
+        //    _ = e;
+        //    Console.WriteLine(e.CourseID);
+        //    return View("combobox");
+        //}
+
+        //public IActionResult Indextres()
+        //{
+
+        //    var listado = ienrollements.UnionDeTablas();
+        //    _ = listado;
+
+
+        //    return View(listado);
+        //}
+
+        public IActionResult GetAllForJoinJsonLinq()
         {
-            var informationofthecombo = icourse.ListarCursos();
-
-
-            List<SelectListItem> lista = new List<SelectListItem>();
-            foreach (var iterarinformation in informationofthecombo)
-            {
-                lista.Add(
-                    new SelectListItem
-                    {
-                        Text = iterarinformation.Title,
-                        Value = Convert.ToString(iterarinformation.CourseId)
-                    }
-
-                    );
-                ViewBag.estado = lista;
-            }
-
-
-            return View();
-        }
-
-        public IActionResult Indextres()
-        {
-
             var listado = ienrollements.UnionDeTablas();
-            _ = listado;
+            var CombinacionDeArreglos = (from union in listado
+                                         select new
+                                         {
+                                             union.Course.Title,
+                                             union.Student.LastName,
+                                             union.Student.FirstMidName,
+                                             union.Grade
+                                         }).ToList();
 
-
-            return View(listado);
+            return Json(new { CombinacionDeArreglos});
         }
+
+        //{"combinacionDeArreglos":[{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":10},{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":9}]}
 
         public IActionResult GetAll()
         {
@@ -82,17 +125,6 @@ namespace Escuela.Controllers
             return Json(new { data = DandoFormatoJson });
         }
 
-        public IActionResult insert(Course c)
-        {
-
-            icourse.Insertar(c);
-            return Redirect("Indexdos");
-        }
-
-        public IActionResult Indexdos()
-        {
-            return View();
-        }
         public IActionResult Privacy()
         {
             

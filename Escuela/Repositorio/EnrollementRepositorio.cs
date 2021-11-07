@@ -24,6 +24,10 @@ namespace Escuela.Repositorio
             return union;
         }
 
-
+        public void Ward(Enrollment e)
+        {
+            bd.Add(e);
+            bd.SaveChanges();
+        }
     }
 }
