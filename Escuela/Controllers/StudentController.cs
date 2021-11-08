@@ -26,8 +26,9 @@ namespace Escuela.Controllers
 
         public  IActionResult SaveStu()
         {
-            //ViewBag.State = "Create";
-            return View();
+            ViewBag.State = "SaveStu";
+            ViewBag.Titulo = "Add";
+            return View("Update");
         }
 
         [HttpPost]
@@ -48,6 +49,7 @@ namespace Escuela.Controllers
         public IActionResult Update(int id )
         {
             ViewBag.State = "Update";
+            ViewBag.Title = "Add";
             var studEdit = istudent.GetById(id);
             if (studEdit == null) 
                 return View("Error");
@@ -70,11 +72,7 @@ namespace Escuela.Controllers
            
             return View("Update");
         }
-        //public IActionResult Edit()
-        //{
-        //    //Update(null, "SaveStu");
-        //    return View("Update");
-        //}
+
         public IActionResult GetAll()
         {
             var DandoFormatoJsonStudent = istudent.GetAll();
