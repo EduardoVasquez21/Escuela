@@ -28,7 +28,7 @@ namespace Escuela.Controllers
         {
             ViewBag.State = "SaveStu";
             ViewBag.Titulo = "Add";
-            return View("Update");
+            return View("SaveStu");
         }
 
         [HttpPost]
