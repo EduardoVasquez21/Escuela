@@ -13,7 +13,7 @@ namespace Escuela.Migrations
                 {
                     CourseId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Credits = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -25,15 +25,15 @@ namespace Escuela.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstMidName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstMidName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EnrollmentsDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentId);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,7 +59,7 @@ namespace Escuela.Migrations
                         name: "FK_Enrollments_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
-                        principalColumn: "StudentId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

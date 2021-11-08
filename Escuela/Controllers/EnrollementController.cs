@@ -37,7 +37,7 @@ namespace Escuela.Controllers
         public IActionResult Combobox()
         {
             var informationofthecombo = icourse.ListarCursos();
-            var informationofthecomboforStudents = istudent.ListOfStudents();
+            //var informationofthecomboforStudents = istudent.ListOfStudents();
 
 
             List<SelectListItem> listOfCourse = new List<SelectListItem>();
@@ -57,18 +57,18 @@ namespace Escuela.Controllers
                 ViewBag.estadolistcourse = listOfCourse;
             }
 
-            foreach (var iterarinformation in informationofthecomboforStudents)
-            {
-                listStudent.Add(
-                    new SelectListItem
-                    {
-                        Text = iterarinformation.FirstMidName,
-                        Value = Convert.ToString(iterarinformation.StudentId)
-                    }
+            //foreach (var iterarinformation in informationofthecomboforStudents)
+            //{
+            //    listStudent.Add(
+            //        new SelectListItem
+            //        {
+            //            Text = iterarinformation.FirstMidName,
+            //            Value = Convert.ToString(iterarinformation.StudentId)
+            //        }
 
-                    );
-                ViewBag.estadoliststudent = listStudent;
-            }
+            //        );
+            //    ViewBag.estadoliststudent = listStudent;
+            //}
 
 
             return View();

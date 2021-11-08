@@ -8,7 +8,7 @@
 <h1 class=" animate__animated animate__rubberBand">Student´s List</h1>
 
 
-<button type="submit" class="btn btn-warning animate__animated animate__rollIn"> @Html.ActionLink("Save new student", "SaveStu")</button>
+<button type="submit" class="btn btn-warning animate__animated animate__rollIn"> @Html.ActionLink("Save new student", "UpdateEdit")</button>
 <br/>
 
 <table id="mitablastu" class="table table-dark table-hover">
@@ -17,6 +17,7 @@
             <th>LastName</th>
             <th>MidName</th>
             <th>Date</th>
+            <th>Actions</th>
         </tr>
 
     </thead>
@@ -32,7 +33,7 @@
 
             var tabla = $('#mitablastu').DataTable({
                 "ajax": {
-                    "url": '/Student/GetAllStudent',
+                    "url": '/Student/GetAll',
                     "type": "get",
                     "datatype": "json"
                 },

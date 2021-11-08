@@ -23,29 +23,61 @@ namespace Escuela.Controllers
             _logger = logger;
         }
 
-        public IActionResult insert()
-        {
 
+        public  IActionResult SaveStu()
+        {
+            //ViewBag.State = "Create";
             return View();
         }
 
-        public IActionResult SaveStu(Students s)
+        [HttpPost]
+        public IActionResult SaveStu([Bind("Id,LastName,FirstMidName,EnrollmentDate")] Students s)
         {
             if (ModelState.IsValid)
             {
                 istudent.Save(s);
-                return View();
+                return RedirectToAction("MostrarAlumnos");
             }
             else
             {
-                return View("SaveStu", s);
+                return View(s);
             }
 
         }
 
-        public IActionResult GetAllStudent()
+        public IActionResult Update(int id )
         {
-            var DandoFormatoJsonStudent = istudent.ListOfStudents();
+            ViewBag.State = "Update";
+            var studEdit = istudent.GetById(id);
+            if (studEdit == null) 
+                return View("Error");
+            return View(studEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Update(int id, [Bind("Id,LastName,FirstMidName,EnrollmentDate")] Students s)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(s);
+            }
+            istudent.Update(id, s);
+            return RedirectToAction("MostrarAlumnos");
+
+        }
+        public IActionResult UpdateEdit()
+        {
+           
+            return View("Update");
+        }
+        //public IActionResult Edit()
+        //{
+        //    //Update(null, "SaveStu");
+        //    return View("Update");
+        //}
+        public IActionResult GetAll()
+        {
+            var DandoFormatoJsonStudent = istudent.GetAll();
 
             return Json(new { data = DandoFormatoJsonStudent });
         }

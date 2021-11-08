@@ -1,0 +1,39 @@
+﻿@model Students
+
+@{
+    ViewData["Title"] = "Actualizar estudiante";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1 class="text-center">Actualizar estudiante</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="@ViewBag.State">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstMidName" class="control-label"></label>
+                        <input asp-for="FirstMidName" class="form-control" />
+                        <span asp-validation-for="FirstMidName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EnrollmentsDate" class="control-label"></label>
+                        <input asp-for="EnrollmentsDate" class="form-control" />
+                        <span asp-validation-for="EnrollmentsDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Actualizar" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="MostrarAlumnos">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
