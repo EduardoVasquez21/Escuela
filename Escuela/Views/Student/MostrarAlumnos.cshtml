@@ -8,8 +8,8 @@
 <h1 class=" animate__animated animate__rubberBand">Student´s List</h1>
 
 
-
-
+<button type="submit" class="btn btn-warning animate__animated animate__rollIn"> @Html.ActionLink("Save new student", "UpdateEdit")</button>
+<br/>
 
 <table id="mitablastu" class="table table-dark table-hover">
     <thead>
@@ -50,11 +50,3 @@
     </script>
 
 }
-
-@*<a class="btn-outline-primary" asp-action="Update" asp-route-id="@Students.Id"><i class="fas fa-edit"></i></a>*@
-
-<div style="position:fixed;right:25px; bottom:75px;" class="text-white">
-    <a asp-controller="Student" asp-action="SaveStu" class="btn btn-success">
-        <i class="fas fa-plus"></i>ADD
-    </a>
-</div>
