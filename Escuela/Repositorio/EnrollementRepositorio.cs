@@ -1,4 +1,6 @@
 ﻿using Escuela.Data;
+using Escuela.Data.Base;
+using Escuela.Data.ViewModels;
 using Escuela.Dominio;
 using Escuela.Servicio;
 using Microsoft.EntityFrameworkCore;
@@ -9,25 +11,83 @@ using System.Threading.Tasks;
 
 namespace Escuela.Repositorio
 {
-    public class EnrollementRepositorio : IEnrollements
+    public class EnrollementRepositorio : EBaseRep<Enrollment>, IEnrollements
     {
         private ApplicationDbContext bd;
 
-        public EnrollementRepositorio(ApplicationDbContext bd)
+        public EnrollementRepositorio(ApplicationDbContext bd) : base(bd)
         {
             this.bd = bd;
         }
-
-        public List<Enrollment> UnionDeTablas()
+        public new IEnumerable<Enrollment> GetAll()
         {
-            var union = bd.Enrollments.Include(e => e.Student).Include(c=>c.Course) .ToList();
-            return union;
+            var enrolments = bd.Enrollments.Include(n => n.Course).Include(s => s.Student).ToList();
+            return enrolments;
+        }
+        public void AddEnrollement(EnrollementViewModel data)
+        {
+            var newEnrollment = new Enrollment()
+            {
+                Grade = data.Grade,
+                CourseID = data.CourseID,
+                StudentID = data.StudentID,
+                State = data.State = true
+            };
+            bd.Enrollments.Add(newEnrollment);
+            bd.SaveChanges();
         }
 
-        public void Ward(Enrollment e)
+        public void DeleteEnrollement(EnrollementViewModel data)
         {
-            bd.Add(e);
-            bd.SaveChanges();
+            var enrollement = bd.Enrollments.FirstOrDefault(e => e.Id == data.Id);
+            if (enrollement != null)
+            {
+                enrollement.Grade = data.Grade;
+                enrollement.CourseID = data.CourseID;
+                enrollement.StudentID = data.StudentID;
+                enrollement.State = data.State = false;
+
+                bd.SaveChanges();
+            }
+        }
+
+        public Enrollment GetEnrollmentById(int id)
+        {
+            var enrollement = bd.Enrollments
+                .Include(b => b.Course)
+                .Include(s => s.Student)
+                .FirstOrDefault(e => e.Id == id);
+
+            return enrollement;
+        }
+
+        public EnrollementDropDown GetNewEnrollmentValues()
+        {
+            var values = new EnrollementDropDown()
+            {
+                Courses = bd.Courses.OrderBy(c => c.Title).ToList(),
+                Students = bd.Students.OrderBy(s => s.LastName).ToList()
+            };
+
+            return values;
+        }
+    
+        
+
+        
+
+        public void UpdateEnrollement(EnrollementViewModel data)
+        {
+            var enrollement = bd.Enrollments.FirstOrDefault(e => e.Id == data.Id);
+            if (enrollement != null)
+            {
+                enrollement.Grade = data.Grade;
+                enrollement.CourseID = data.CourseID;
+                enrollement.StudentID = data.StudentID;
+                enrollement.State = data.State = true;
+
+                bd.SaveChanges();
+            }
         }
     }
 }

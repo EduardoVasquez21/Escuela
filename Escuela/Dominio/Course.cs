@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Escuela.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Escuela.Dominio
 {
-    public class Course
+    public class Course:Ibase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int CourseId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Title")]
         [Required(ErrorMessage = "REQUIRED DATA")]

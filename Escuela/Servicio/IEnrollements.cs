@@ -1,4 +1,6 @@
-﻿using Escuela.Dominio;
+﻿using Escuela.Data.Base;
+using Escuela.Data.ViewModels;
+using Escuela.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace Escuela.Servicio
 {
-    public interface IEnrollements
+    public interface IEnrollements:IEntBase<Enrollment>
     {
-        void Ward(Enrollment e);
+        Enrollment GetEnrollmentById(int id);
+        EnrollementDropDown GetNewEnrollmentValues();
 
-        List<Enrollment> UnionDeTablas();
+        void AddEnrollement(EnrollementViewModel data);
+        void UpdateEnrollement(EnrollementViewModel data);
+        void DeleteEnrollement(EnrollementViewModel data);
+        
     }
 }

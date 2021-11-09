@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Students>
 @{
     ViewData["Title"] = "MostrarAlumnos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,50 +8,45 @@
 <h1 class=" animate__animated animate__rubberBand">Student´s List</h1>
 
 
-
-
-
-<table id="mitablastu" class="table table-dark table-hover">
+<table id="mitablastu" class="table table-dark table-dark">
     <thead>
         <tr>
-            <th>LastName</th>
-            <th>MidName</th>
-            <th>Date</th>
+            <th>@Html.DisplayNameFor(x => x.Id)</th>
+            <th>@Html.DisplayNameFor(x => x.FirstMidName)</th>
+            <th>@Html.DisplayNameFor(x => x.LastName)</th>
+            <th>@Html.DisplayNameFor(x => x.EnrollmentsDate)</th>
             <th>Actions</th>
         </tr>
 
     </thead>
+    <tbody>
+
+        @foreach (var student in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => student.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => student.FirstMidName)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => student.LastName)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => student.EnrollmentsDate)
+                </th>
+
+                <td>
+                    <a class="btn btn-outline-primary" asp-action="Update" asp-route-id="@student.Id"><i class="fas fa-edit"></i>Update</a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
 
 </table>
-
-@section scripts{
-
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-
-            var tabla = $('#mitablastu').DataTable({
-                "ajax": {
-                    "url": '/Student/GetAll',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "lastName", "name": "lastName", "autoWidth": true },
-                    { "data": "firstMidName", "name": "firstMidName", "autoWidth": true },
-                    { "data": "enrollmentsDate", "name": "enrollmentsDate", "autoWidth": true }
-
-                ]
-
-
-            })
-        })
-    </script>
-
-}
-
-@*<a class="btn-outline-primary" asp-action="Update" asp-route-id="@Students.Id"><i class="fas fa-edit"></i></a>*@
 
 <div style="position:fixed;right:25px; bottom:75px;" class="text-white">
     <a asp-controller="Student" asp-action="SaveStu" class="btn btn-success">

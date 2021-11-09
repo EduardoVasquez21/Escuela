@@ -101,20 +101,20 @@ namespace Escuela.Controllers
         //    return View(listado);
         //}
 
-        public IActionResult GetAllForJoinJsonLinq()
-        {
-            var listado = ienrollements.UnionDeTablas();
-            var CombinacionDeArreglos = (from union in listado
-                                         select new
-                                         {
-                                             union.Course.Title,
-                                             union.Student.LastName,
-                                             union.Student.FirstMidName,
-                                             union.Grade
-                                         }).ToList();
+        //public IActionResult GetAllForJoinJsonLinq()
+        //{
+        //    var listado = ienrollements.UnionDeTablas();
+        //    var CombinacionDeArreglos = (from union in listado
+        //                                 select new
+        //                                 {
+        //                                     union.Course.Title,
+        //                                     union.Student.LastName,
+        //                                     union.Student.FirstMidName,
+        //                                     union.Grade
+        //                                 }).ToList();
 
-            return Json(new { CombinacionDeArreglos});
-        }
+        //    return Json(new { CombinacionDeArreglos});
+        //}
 
         //{"combinacionDeArreglos":[{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":10},{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":9}]}
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Escuela.Data.Base;
+using Escuela.Data.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,22 +10,16 @@ using System.Threading.Tasks;
 namespace Escuela.Dominio
 {
 
-    public enum Grade
-    {
-        A,B,C,D
-    }
-    public class Enrollment
+
+    public class Enrollment:Ibase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EnrollmentId { get; set; }
+        public int Id { get; set; }
 
-        [Display(Name = "CourseID")]
-        [Required(ErrorMessage = "REQUIRED DATA")]
         public int CourseID { get; set; }
 
-        [Display(Name = "StudentID")]
-        [Required(ErrorMessage = "REQUIRED DATA")]
+
         public int StudentID { get; set; }
 
         public Grade? Grade { get; set; }
@@ -31,5 +27,7 @@ namespace Escuela.Dominio
         public Course Course { get; set; }
 
         public Students Student { get; set; }
+
+        public bool State { get; set; }
     }
 }

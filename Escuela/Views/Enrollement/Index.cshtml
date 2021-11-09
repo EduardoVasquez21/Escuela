@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Enrollment>
+@{
+    ViewData["Title"] = "MostrarAlumnos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class=" animate__animated animate__rubberBand">Student´s List</h1>
+
+
+<table id="mitablastu" class="table table-dark table-dark">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Id)</th>
+            <th>@Html.DisplayNameFor(x => x.Student.FirstMidName)</th>
+            <th>@Html.DisplayNameFor(x => x.Student.LastName)</th>
+            <th>@Html.DisplayNameFor(x => x.Grade)</th>
+            <th>@Html.DisplayNameFor(x => x.Course.Title)</th>
+            <th>@Html.DisplayNameFor(x => x.Course.Credits)</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var enrollment in Model)
+        {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Id)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Student.FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Student.LastName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Grade)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Course.Title)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => enrollment.Course.Credits)
+            </th>
+            <td>
+                <a class="btn btn-outline-primary" asp-action="Save" asp-route-id="@enrollment.Id"><i class="fas fa-edit"></i>Update</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@enrollment.Id"><i class="fas fa-edit"></i>Delete</a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<div style="position:fixed;right:25px; bottom:75px;" class="text-white">
+    <a asp-controller="Enrollement" asp-action="Save" class="btn btn-success">
+        <i class="fas fa-plus"></i>ADD
+    </a>
+</div>

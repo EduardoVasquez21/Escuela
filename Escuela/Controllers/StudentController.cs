@@ -23,7 +23,7 @@ namespace Escuela.Controllers
             _logger = logger;
         }
 
-
+        
         public  IActionResult SaveStu()
         {
             ViewBag.State = "SaveStu";
@@ -82,7 +82,9 @@ namespace Escuela.Controllers
 
         public IActionResult MostrarAlumnos()
         {
-            return View();
+            var students = istudent.GetAll();
+
+            return View(students);
         }
 
     }
