@@ -118,24 +118,24 @@ namespace Escuela.Controllers
 
         //{"combinacionDeArreglos":[{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":10},{"title":"Bd","lastName":"Vasquez","firstMidName":"Eduardo","grade":9}]}
 
-        public IActionResult GetAll()
-        {
-            var DandoFormatoJson = icourse.ListarCursos();
+        //public IActionResult GetAll()
+        //{
+        //    var DandoFormatoJson = icourse.ListarCursos();
 
-            return Json(new { data = DandoFormatoJson });
-        }
+        //    return Json(new { data = DandoFormatoJson });
+        //}
 
-        public IActionResult Privacy()
-        {
+        //public IActionResult Privacy()
+        //{
             
-            return View();
-        }
+        //    return View();
+        //}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
 
 
     }

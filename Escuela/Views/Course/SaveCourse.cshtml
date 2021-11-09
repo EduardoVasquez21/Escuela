@@ -1,0 +1,34 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Course´s Data";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1 class="text-center">Course´s Data</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="@ViewBag.State">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Credits" class="control-label"></label>
+                        <input asp-for="Credits" class="form-control" />
+                        <span asp-validation-for="Credits" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="MostrarCourses">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

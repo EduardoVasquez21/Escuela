@@ -94,7 +94,7 @@ namespace Escuela.Controllers
             }
 
             ienrollements.UpdateEnrollement(enrollment);
-            return RedirectToAction(nameof(Update));
+            return RedirectToAction(nameof(Index));
 
         }
 

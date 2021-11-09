@@ -1,53 +1,51 @@
-﻿
+﻿@model IEnumerable<Course>
 @{
     ViewData["Title"] = "MostrarCourses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<h1 class=" animate__animated animate__backInLeft">Course List</h1>
 
-<button type="submit" class="btn btn-outline-dark animate__animated animate__backInDown"> @Html.ActionLink("Add a Course", "Indexdos")</button>
-<br />
-<br />
-<br />
+<h1 class=" animate__animated animate__rubberBand">Course´s List</h1>
 
-<table id="mitabla" class="table table-dark table-hover">
+
+<table id="mitablastu" class="table table-dark table-dark">
     <thead>
         <tr>
-            @*<th>Course Id</th>*@
-            <th>Title</th>
-            <th>Credits</th>
+            <th>@Html.DisplayNameFor(x => x.Id)</th>
+            <th>@Html.DisplayNameFor(x => x.Title)</th>
+            <th>@Html.DisplayNameFor(x => x.Credits)</th>
+            <th>Actions</th>
         </tr>
 
     </thead>
+    <tbody>
+
+        @foreach (var course in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => course.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => course.Title)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => course.Credits)
+                </th>
+
+                <td>
+                    <a class="btn btn-outline-primary" asp-action="Update" asp-route-id="@course.Id"><i class="fas fa-edit"></i>Update</a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
 
 </table>
 
-@section scripts{
-
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-
-            var tabla = $('#mitabla').DataTable({
-                "ajax": {
-                    "url": '/Course/GetAll',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    /*{ "data": "courseId", "name": "courserId", "autoWidth": true },*/
-                    { "data": "title", "name": "title", "autoWidth": true },
-                    { "data": "credits", "name": "credits", "autoWidth": true }
-
-                ]
-
-
-            })
-        })
-    </script>
-
-}
+<div style="position:fixed;right:25px; bottom:75px;" class="text-white">
+    <a asp-controller="Course" asp-action="SaveCourse" class="btn btn-success">
+        <i class="fas fa-plus"></i>ADD
+    </a>
+</div>
