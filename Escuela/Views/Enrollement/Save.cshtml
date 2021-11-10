@@ -3,34 +3,40 @@
 @{
     ViewData["Title"] = "Enrollement´s Data";
 }
+<script src="https://kit.fontawesome.com/16bd784e77.js" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1 class="text-center">Enrollement´s Data</h1>
+            <h1 class=" animate__animated animate__fadeInTopRight">Enrollement´s Data</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <form asp-action="Save">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
+                        <i class="fas fa-user-tie"></i>
                         <label asp-for="StudentID" class="control-label"></label>
                         <select asp-for="StudentID" class="form-control" asp-items="ViewBag.Students"></select>
                         <span asp-validation-for="StudentID" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <i class="fas fa-book"></i>
                         <label asp-for="CourseID" class="control-label"></label>
                         <select asp-for="CourseID" class="form-control" asp-items="ViewBag.Courses"></select>
                         <span asp-validation-for="CourseID" class="text-danger"></span>
                     </div>
                     <div class="form-group">
+                        <i class="fab fa-accusoft"></i>
                         <label asp-for="Grade" class="control-label"></label>
                         <select asp-for="Grade" class="form-control" asp-items="Html.GetEnumSelectList<Grade>()"></select>
                         <span asp-validation-for="Grade" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Send" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Regresar</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Return</a>
                     </div>
                 </form>
             </div>

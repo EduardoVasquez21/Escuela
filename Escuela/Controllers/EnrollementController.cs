@@ -104,7 +104,7 @@ namespace Escuela.Controllers
             if (enrollement == null)
                 return View("Error");
 
-            var response = new EnrollementViewModel()
+            var respuesta = new EnrollementViewModel()
             {
                 Id = enrollement.Id,
                 StudentID = enrollement.StudentID,
@@ -113,7 +113,7 @@ namespace Escuela.Controllers
                 State = enrollement.State = false
             };
 
-            ienrollements.DeleteEnrollement(response);
+            ienrollements.DeleteEnrollement(respuesta);
             return RedirectToAction(nameof(Index));
         }
 

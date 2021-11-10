@@ -44,7 +44,7 @@ namespace Escuela.Controllers
         public IActionResult Update(int id)
         {
             ViewBag.State = "Update";
-            ViewBag.Title = "Add";
+            ViewBag.Title = "Update Course";
             var CourseEdit = icourse.GetById(id);
             if (CourseEdit == null)
                 return View("Error");
